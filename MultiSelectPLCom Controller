@@ -1,0 +1,34 @@
+({
+	init : function(component, event, helper) {
+        	var recarr = [];
+			for(var i =1 ; i < 6 ; i++)
+                recarr.push(i);
+        	component.set("v.allvalues",recarr);
+        	//console.log(component.get("v.allvalues")[0]);
+	},
+    add : function(component, event, helper) {
+        	var recarr = component.get("v.allvalues");
+        	var selval = component.get("v.selectedValue");
+        	var selarr = component.get("v.selValues");
+        	var index = recarr.indexOf(parseInt(selval));
+        	console.log(index+'*-----------*'+recarr[2]+'*-----*'+selval);
+            if(index  > -1){
+                recarr.splice(index, 1);
+                selarr.push(parseInt(selval));
+                component.set("v.allvalues",recarr);
+                component.set("v.selValues",selarr);
+            }
+	},
+    returnNumber : function(component, event, helper) {
+        	var recarr = component.get("v.allvalues");
+        	var selval = component.get("v.unselectedValue");
+        	var selarr = component.get("v.selValues");
+        	var index = selarr.indexOf(parseInt(selval));
+            if(index  > -1){
+                selarr.splice(index, 1);
+                recarr.push(parseInt(selval));
+                component.set("v.allvalues",recarr);
+                component.set("v.selValues",selarr);
+            }
+	}
+})
