@@ -1,0 +1,37 @@
+<aura:component >
+    <aura:attribute name="allvalues" type="List" />
+    <aura:attribute name="selValues" type="List" />
+    <aura:attribute name="selectedValue" type="String"/>
+    <aura:attribute name="unselectedValue" type="String"/>
+    <aura:handler name="init" value="this" action="{!c.init}" />
+    <div class="slds-page-header">
+      <div class="slds-media">
+        <div class="slds-media__figure">
+          
+        </div>
+        <div class="slds-media__body">
+          <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Select The value from one list and pass it in another">
+            	Select The value from one list and pass it in another
+            </h1>
+          <p class="slds-text-body_small slds-line-height_reset"></p>
+        </div>
+      </div>
+    </div>
+    <br/><br/>
+     <lightning:select name="mySelect" label="Select a Number:" value="{!v.selectedValue}" aura:id="mySelect">
+        <option value="">choose one...</option>
+        <aura:iteration items="{!v.allvalues}" var="allkey" >
+            <option value="{!allkey}">{!allkey}</option>
+    	</aura:iteration>
+    </lightning:select>
+    <br/><br/>
+    <lightning:button variant="brand" label="Add" onclick="{! c.add }" />
+    <lightning:button variant="destructive" label="Return" onclick="{! c.returnNumber }" />
+    <br/><br/>
+    <lightning:select name="selectItem" label="Return a Number" value="{!v.unselectedValue}" aura:id="unSelect">
+        <option value="">choose one...</option>
+        <aura:iteration items="{!v.selValues}" var="allkey" >
+            <option value="{!allkey}">{!allkey}</option>
+    	</aura:iteration>
+    </lightning:select>
+</aura:component>
